@@ -1,10 +1,19 @@
 import "dotenv/config";
 import express, { NextFunction, Request, Response } from "express";
+import cors from "cors";
 import postsRoutes from "./routes/posts";
 import morgan from "morgan";
 import createHttpError, { isHttpError } from "http-errors";
 
 const app = express();
+
+const allowedOrigins = ["http://localhost:3000"];
+
+const options: cors.CorsOptions = {
+  origin: allowedOrigins,
+};
+
+app.use(cors(options));
 
 app.use(morgan("dev"));
 
