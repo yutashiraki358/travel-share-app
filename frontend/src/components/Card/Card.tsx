@@ -9,6 +9,7 @@ import {
   ActionButton,
   CreateAt,
 } from "../../styles/CardStyles";
+import { FaCommentAlt, FaThumbsUp, FaRegEye } from "react-icons/fa";
 
 interface PostProps {
   post: PostModel;
@@ -25,9 +26,15 @@ const Card = ({ post }: PostProps) => {
         <Location>{location}</Location>
         <Description>{text}</Description>
         <Actions>
-          <ActionButton>0 Comments</ActionButton>
-          <ActionButton>0 Likes</ActionButton>
-          <ActionButton>0 Views</ActionButton>
+          <ActionButton>
+            <FaCommentAlt />0 Comments
+          </ActionButton>
+          <ActionButton>
+            <FaThumbsUp />0 Likes
+          </ActionButton>
+          <ActionButton>
+            <FaRegEye />0 Views
+          </ActionButton>
         </Actions>
       </CardWrap>
     </div>
