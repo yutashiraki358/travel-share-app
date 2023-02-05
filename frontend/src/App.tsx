@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
-import { Post } from "./models/post";
+import styled from "styled-components";
+import { Post as PostModel } from "./models/post";
 import axios from "axios";
+import Card from "./components/Card/Card";
 
 function App() {
-  const [posts, setPosts] = useState<Post[]>([]);
+  const [posts, setPosts] = useState<PostModel[]>([]);
 
   useEffect(() => {
     axios
@@ -21,10 +23,24 @@ function App() {
 
   return (
     <div className="App">
-      <div> </div>
-      {JSON.stringify(posts)}
+      <StyledRoot>
+        <StyledContainer>
+          {posts.map((post) => (
+            <Card post={post} key={post._id} />
+          ))}
+        </StyledContainer>
+      </StyledRoot>
     </div>
   );
 }
+
+const StyledRoot = styled.div`
+  padding: 50px 12px;
+`;
+const StyledContainer = styled.div`
+  max-width: 550px;
+  width: 100%;
+  margin: auto;
+`;
 
 export default App;

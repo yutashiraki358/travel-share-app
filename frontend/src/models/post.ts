@@ -4,6 +4,6 @@ export interface Post {
   location: string;
   image: string;
   text: string;
-  createAt: string;
-  updateAt: string;
+  createdAt: string;
+  updatedAt: string;
 }
