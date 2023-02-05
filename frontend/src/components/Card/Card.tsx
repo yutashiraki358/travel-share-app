@@ -10,6 +10,7 @@ import {
   CreateAt,
 } from "../../styles/CardStyles";
 import { FaCommentAlt, FaThumbsUp, FaRegEye } from "react-icons/fa";
+import { formatDate } from "../../utils/formatDate";
 
 interface PostProps {
   post: PostModel;
@@ -17,11 +18,18 @@ interface PostProps {
 
 const Card = ({ post }: PostProps) => {
   const { title, location, image, text, createdAt, updatedAt } = post;
+
+  let createdUpdatedText: string;
+  if (updatedAt > createdAt) {
+    createdUpdatedText = "Updated" + formatDate(updatedAt);
+  } else {
+    createdUpdatedText = "Created" + formatDate(createdAt);
+  }
   return (
     <div style={{ color: "#fff" }}>
       <CardWrap>
         <StyledPhoto src={image} alt="" />
-        <CreateAt>{createdAt}</CreateAt>
+        <CreateAt>{createdUpdatedText}</CreateAt>
         <Title>{title}</Title>
         <Location>{location}</Location>
         <Description>{text}</Description>
